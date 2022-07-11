@@ -3,10 +3,11 @@ package main;
 import com.google.gson.Gson;
 import connection.DBConnection;
 import interfaces.IAppMarvel;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import service.ConsumerApi;
 import service.Messages;
 import model.Character;
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,7 +21,10 @@ public class AppMarvel implements IAppMarvel {
     public Character getCharacter(String name) throws IOException {
         final Gson gson = new Gson();
         String response = ConsumerApi.response(name);
-        return gson.fromJson(response, Character.class);
+        JSONObject jsonResponse = new JSONObject(response);
+        JSONObject data = jsonResponse.getJSONObject("data");
+        JSONArray result = data.getJSONArray("results");
+        return gson.fromJson(result.getJSONObject(0).toString(), Character.class);
     }
 
     @Override

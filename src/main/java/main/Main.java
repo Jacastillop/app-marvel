@@ -14,9 +14,10 @@ public class Main {
 
     public static void main(String[] args) throws IOException, SQLException {
         AppMarvel myAppMarvel = new AppMarvel();
+        message.showMessage("Insert name");
         Character character = myAppMarvel.getCharacter(scanner.getString());
         message.showMessage(character.toString());
-        //myAppMarvel.crateCharacter(character);
+        myAppMarvel.crateCharacter(character);
 
     }
 }
