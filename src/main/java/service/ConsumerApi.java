@@ -1,5 +1,7 @@
 package service;
 
+import com.google.gson.Gson;
+import model.Character;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -19,7 +21,7 @@ public class ConsumerApi {
         }
     }
 
-    public static String getCharacter(String name) throws IOException {
+    public static String response(String name) throws IOException {
         String url = String.format("https://gateway.marvel.com/v1/public/characters?nameStartsWith=%s&ts=52&apikey=c7e6ddb5f4e5204134fd8933c5ade103&hash=441d24ff33fa8b27c3442396a9987430", name);
         String response = run(url);
         return response;
