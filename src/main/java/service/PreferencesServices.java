@@ -4,17 +4,17 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
-public class Preferences {
+public class PreferencesServices {
     private static final String PATH = "src/main/resources/Configuration.properties";
     private static final Messages message = Messages.getInstance();
     private static Properties properties= new Properties();
-    private static Preferences instance = null;
+    private static PreferencesServices instance = null;
 
-    public static Preferences getInstance() {
-        if (instance instanceof Preferences) {
+    public static PreferencesServices getInstance() {
+        if (instance instanceof PreferencesServices) {
             return instance;
         } else {
-            instance = new Preferences();
+            instance = new PreferencesServices();
         }
         return instance;
     }
